@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.AI;
+using TMPro;
 
 public class ManagementTap : MonoBehaviour {
 
@@ -12,7 +13,7 @@ public class ManagementTap : MonoBehaviour {
         //Canvas Object(s):
     public GameObject UI; //UI Canvas objects (Used to hide and display when clicking on the below world objects
         //In-world Objects:
-    public Text UITitle; //Title 3D scene text object
+    public TextMeshProUGUI UITitle; //Title 3D scene text object
     public GameObject Combat; //In-game object for the Combat UI function
     public GameObject Shipyard; //In-game object for the Shipyard UI function
     public GameObject Market; //In-game object for the Market UI function
@@ -94,16 +95,6 @@ public class ManagementTap : MonoBehaviour {
         if (UI.activeInHierarchy == true && Market.activeInHierarchy == true)
         {
             //Display the amount of loot in the ships cargo
-            GameObject.Find("Grain").transform.GetChild(0).GetComponent<Text>().text = PlayerPrefs.GetInt("Grain").ToString();
-            GameObject.Find("Fish").transform.GetChild(0).GetComponent<Text>().text = PlayerPrefs.GetInt("Fish").ToString();
-            GameObject.Find("Oil").transform.GetChild(0).GetComponent<Text>().text = PlayerPrefs.GetInt("Oil").ToString();
-            GameObject.Find("Wood").transform.GetChild(0).GetComponent<Text>().text = PlayerPrefs.GetInt("Wood").ToString();
-            GameObject.Find("Brick").transform.GetChild(0).GetComponent<Text>().text = PlayerPrefs.GetInt("Brick").ToString();
-            GameObject.Find("Iron").transform.GetChild(0).GetComponent<Text>().text = PlayerPrefs.GetInt("Iron").ToString();
-            GameObject.Find("Rum").transform.GetChild(0).GetComponent<Text>().text = PlayerPrefs.GetInt("Rum").ToString();
-            GameObject.Find("Silk").transform.GetChild(0).GetComponent<Text>().text = PlayerPrefs.GetInt("Silk").ToString();
-            GameObject.Find("Silverware").transform.GetChild(0).GetComponent<Text>().text = PlayerPrefs.GetInt("Silverware").ToString();
-            GameObject.Find("Emerald").transform.GetChild(0).GetComponent<Text>().text = PlayerPrefs.GetInt("Emerald").ToString();
         }
             //Update Shipyard UI text with relevant PlayerPref variables:
         if (UI.activeInHierarchy == true && Shipyard.activeInHierarchy == true)

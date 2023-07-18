@@ -4,6 +4,9 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.AI;
+using Newtonsoft.Json;
+using Assets.Scripts;
+using System.Linq;
 
 public class UIFunctions : MonoBehaviour {
 
@@ -172,47 +175,19 @@ public class UIFunctions : MonoBehaviour {
         //This function sells all of the players cargo items based on the table found in the brief of the assignment
         //Play the generic ui click sound effect
         Click.Play();
-        //Checks if there is even anything to sell:
-        if (PlayerPrefs.GetInt("Grain") > 0 || 
-            PlayerPrefs.GetInt("Fish") > 0 ||
-            PlayerPrefs.GetInt("Oil") > 0 ||
-            PlayerPrefs.GetInt("Wood") > 0 ||
-            PlayerPrefs.GetInt("Brick") > 0 ||
-            PlayerPrefs.GetInt("Iron") > 0 ||
-            PlayerPrefs.GetInt("Rum") > 0 ||
-            PlayerPrefs.GetInt("Silk") > 0 ||
-            PlayerPrefs.GetInt("Silverware") > 0 ||
-            PlayerPrefs.GetInt("Emerald") > 0)
+        var currentInventory = PlayerPrefs.GetString("Inventory");
+        var inventory = JsonConvert.DeserializeObject<Inventory>(currentInventory);
+
+        if (inventory.Items.Any())
         {
             //Play the selling sound effect if there was something to be sold
             SellStuff.Play();
-
-            //Sets the players gold amount to the current value plus whatever they've earned by selling the cargo
-            PlayerPrefs.SetInt("Gold", PlayerPrefs.GetInt("Gold") + 
-                (PlayerPrefs.GetInt("Grain") * 1) +
-                (PlayerPrefs.GetInt("Fish") * 2) +
-                (PlayerPrefs.GetInt("Oil") * 3) +
-                (PlayerPrefs.GetInt("Wood") * 5) +
-                (PlayerPrefs.GetInt("Brick") * 8) +
-                (PlayerPrefs.GetInt("Iron") * 10) +
-                (PlayerPrefs.GetInt("Rum") * 15) +
-                (PlayerPrefs.GetInt("Silk") * 20) +
-                (PlayerPrefs.GetInt("Silverware") * 30) +
-                (PlayerPrefs.GetInt("Emerald") * 50) 
-                );
-
-            //Set the current cargo amount to 0
-            PlayerPrefs.SetInt("Grain", 0);
-            PlayerPrefs.SetInt("Fish", 0);
-            PlayerPrefs.SetInt("Oil", 0);
-            PlayerPrefs.SetInt("Wood", 0);
-            PlayerPrefs.SetInt("Brick", 0);
-            PlayerPrefs.SetInt("Iron", 0);
-            PlayerPrefs.SetInt("Rum", 0);
-            PlayerPrefs.SetInt("Silk", 0);
-            PlayerPrefs.SetInt("Silverware", 0);
-            PlayerPrefs.SetInt("Emerald", 0);
+            int goldMade = inventory.Items.Sum(i => (int)i.LootName * i.Count);
+            PlayerPrefs.SetInt("Gold", PlayerPrefs.GetInt("Gold") + goldMade);
+            inventory = new Inventory();
         }
+
+        PlayerPrefs.SetString("Inventory", JsonConvert.SerializeObject(inventory));
     }
         //Generic Selling comments:
             //Sell one:

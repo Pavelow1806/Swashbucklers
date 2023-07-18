@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Assets.Scripts;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,7 +8,7 @@ public class LootCrate : MonoBehaviour {
     //Script attached to the spawned loot object when an enemy has died
 
     //Variable to store the type of loot the crate is holding
-    public string LootType;
+    public LootType LootType;
 
     private void Awake()
     {
@@ -37,12 +38,12 @@ public class LootCrate : MonoBehaviour {
         //If the countdown of 5 seconds reached 0 destroy the gameobject
         Destroy(gameObject);
     }
-    public string GiveType()
+    public LootType GiveType()
     {
         //Return the loot type of this instance of the loot
         return LootType;
     }
-    public void TakeType(string LT)
+    public void TakeType(LootType LT)
     {
         //Give this instance of the loot crate a loot type
         LootType = LT;

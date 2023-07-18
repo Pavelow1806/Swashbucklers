@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Assets.Scripts;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
@@ -214,113 +215,113 @@ public class EnemyAI : MonoBehaviour {
                         randLoot = Random.Range(0.0f, 100.0f);
                         if (randLoot >= 0.0f && randLoot <= 25.0f) //Grain 25%
                         {
-                            newLoot.GetComponent<LootCrate>().TakeType("Grain");
+                            newLoot.GetComponent<LootCrate>().TakeType(LootType.Grain);
                         }
                         else if (randLoot > 25.0f && randLoot <= 47.0f) //Fish 22%
                         {
-                            newLoot.GetComponent<LootCrate>().TakeType("Fish");
+                            newLoot.GetComponent<LootCrate>().TakeType(LootType.Fish);
                         }
                         else if (randLoot > 47.0f && randLoot <= 65.0f) //Oil 18%
                         {
-                            newLoot.GetComponent<LootCrate>().TakeType("Oil");
+                            newLoot.GetComponent<LootCrate>().TakeType(LootType.Oil);
                         }
                         else if (randLoot > 65.0f && randLoot <= 78.0f) //Wood 13%
                         {
-                            newLoot.GetComponent<LootCrate>().TakeType("Wood");
+                            newLoot.GetComponent<LootCrate>().TakeType(LootType.Wood);
                         }
                         else if (randLoot > 78.0f && randLoot <= 88.0f) //Brick 10%
                         {
-                            newLoot.GetComponent<LootCrate>().TakeType("Brick");
+                            newLoot.GetComponent<LootCrate>().TakeType(LootType.Brick);
                         }
                         else if (randLoot > 88.0f && randLoot <= 96.0f) //Iron 8%
                         {
-                            newLoot.GetComponent<LootCrate>().TakeType("Iron");
+                            newLoot.GetComponent<LootCrate>().TakeType(LootType.Iron);
                         }
                         else if (randLoot > 96.0f && randLoot <= 100.0f) //Rum 4%
                         {
-                            newLoot.GetComponent<LootCrate>().TakeType("Rum");
+                            newLoot.GetComponent<LootCrate>().TakeType(LootType.Rum);
                         }
                         break;
                     case "Caravel(Clone)":
                         randLoot = Random.Range(0.0f, 100.0f);
                         if (randLoot >= 0.0f && randLoot <= 22.0f) //Grain 22%
                         {
-                            newLoot.GetComponent<LootCrate>().TakeType("Grain");
+                            newLoot.GetComponent<LootCrate>().TakeType(LootType.Grain);
                         }
                         else if (randLoot > 22.0f && randLoot <= 41.0f) //Fish 19%
                         {
-                            newLoot.GetComponent<LootCrate>().TakeType("Fish");
+                            newLoot.GetComponent<LootCrate>().TakeType(LootType.Fish);
                         }
                         else if (randLoot > 41.0f && randLoot <= 56.0f) //Oil 15%
                         {
-                            newLoot.GetComponent<LootCrate>().TakeType("Oil");
+                            newLoot.GetComponent<LootCrate>().TakeType(LootType.Oil);
                         }
                         else if (randLoot > 56.0f && randLoot <= 68.0f) //Wood 12%
                         {
-                            newLoot.GetComponent<LootCrate>().TakeType("Wood");
+                            newLoot.GetComponent<LootCrate>().TakeType(LootType.Wood);
                         }
                         else if (randLoot > 68.0f && randLoot <= 79.0f) //Brick 11%
                         {
-                            newLoot.GetComponent<LootCrate>().TakeType("Brick");
+                            newLoot.GetComponent<LootCrate>().TakeType(LootType.Brick);
                         }
                         else if (randLoot > 79.0f && randLoot <= 88.0f) //Iron 9%
                         {
-                            newLoot.GetComponent<LootCrate>().TakeType("Iron");
+                            newLoot.GetComponent<LootCrate>().TakeType(LootType.Iron);
                         }
                         else if (randLoot > 88.0f && randLoot <= 94.0f) //Rum 6%
                         {
-                            newLoot.GetComponent<LootCrate>().TakeType("Rum");
+                            newLoot.GetComponent<LootCrate>().TakeType(LootType.Rum);
                         }
                         else if (randLoot > 94.0f && randLoot <= 98.0f) //Silk 4%
                         {
-                            newLoot.GetComponent<LootCrate>().TakeType("Silk");
+                            newLoot.GetComponent<LootCrate>().TakeType(LootType.Silk);
                         }
                         else if (randLoot > 98.0f && randLoot <= 100.0f) //Silverware 2%
                         {
-                            newLoot.GetComponent<LootCrate>().TakeType("Silverware");
+                            newLoot.GetComponent<LootCrate>().TakeType(LootType.Silverware);
                         }
                         break;
                     case "Brigantine(Clone)":
                         randLoot = Random.Range(0.0f, 100.0f);
                         if (randLoot >= 0.0f && randLoot <= 18.0f) //Grain 18%
                         {
-                            newLoot.GetComponent<LootCrate>().TakeType("Grain");
+                            newLoot.GetComponent<LootCrate>().TakeType(LootType.Grain);
                         }
                         else if (randLoot > 18.0f && randLoot <= 34.0f) //Fish 16%
                         {
-                            newLoot.GetComponent<LootCrate>().TakeType("Fish");
+                            newLoot.GetComponent<LootCrate>().TakeType(LootType.Fish);
                         }
                         else if (randLoot > 34.0f && randLoot <= 47.0f) //Oil 13%
                         {
-                            newLoot.GetComponent<LootCrate>().TakeType("Oil");
+                            newLoot.GetComponent<LootCrate>().TakeType(LootType.Oil);
                         }
                         else if (randLoot > 47.0f && randLoot <= 59.0f) //Wood 12%
                         {
-                            newLoot.GetComponent<LootCrate>().TakeType("Wood");
+                            newLoot.GetComponent<LootCrate>().TakeType(LootType.Wood);
                         }
                         else if (randLoot > 59.0f && randLoot <= 70.0f) //Brick 11%
                         {
-                            newLoot.GetComponent<LootCrate>().TakeType("Brick");
+                            newLoot.GetComponent<LootCrate>().TakeType(LootType.Brick);
                         }
                         else if (randLoot > 70.0f && randLoot <= 80.0f) //Iron 10%
                         {
-                            newLoot.GetComponent<LootCrate>().TakeType("Iron");
+                            newLoot.GetComponent<LootCrate>().TakeType(LootType.Iron);
                         }
                         else if (randLoot > 80.0f && randLoot <= 88.0f) //Rum 8%
                         {
-                            newLoot.GetComponent<LootCrate>().TakeType("Rum");
+                            newLoot.GetComponent<LootCrate>().TakeType(LootType.Rum);
                         }
                         else if (randLoot > 88.0f && randLoot <= 93.0f) //Silk 5%
                         {
-                            newLoot.GetComponent<LootCrate>().TakeType("Silk");
+                            newLoot.GetComponent<LootCrate>().TakeType(LootType.Silk);
                         }
                         else if (randLoot > 93.0f && randLoot <= 97.0f) //Silverware 4%
                         {
-                            newLoot.GetComponent<LootCrate>().TakeType("Silverware");
+                            newLoot.GetComponent<LootCrate>().TakeType(LootType.Silverware);
                         }
                         else if (randLoot > 97.0f && randLoot <= 100.0f) //Emerald 3%
                         {
-                            newLoot.GetComponent<LootCrate>().TakeType("Silverware");
+                            newLoot.GetComponent<LootCrate>().TakeType(LootType.Silverware);
                         }
                         break;
                     default:

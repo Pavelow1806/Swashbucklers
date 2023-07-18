@@ -1,9 +1,12 @@
-﻿using System.Collections;
+﻿using Assets.Scripts;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityStandardAssets.CrossPlatformInput;
-using UnityEngine.SceneManagement;
 
 public class Combat : MonoBehaviour {
 
@@ -51,19 +54,8 @@ public class Combat : MonoBehaviour {
     private float GameEndTime = 0.0f;
 
     //Ship's Current Inventory items:
+    public List<Item> Inventory = new List<Item>();
     public int Gold = 0;
-    private int Grain = 0;
-    private int Fish = 0;
-    private int Oil = 0;
-    private int Wood = 0;
-    private int Brick = 0;
-    private int Iron = 0;
-    private int Rum = 0;
-    private int Silk = 0;
-    private int Silverware = 0;
-    private int Emerald = 0;
-    //Current amount of cargo:
-    private int currentCargo = 0;
 
     //Ship's Stats:
     private float Quality;
@@ -128,13 +120,13 @@ public class Combat : MonoBehaviour {
         //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
         //          Enemy Spawning
         //Get the random percentage which defines how many enemies will spawn
-        float SpawnPerc = Random.Range(0.0f, 100.0f);
+        float SpawnPerc = UnityEngine.Random.Range(0.0f, 100.0f);
         if (SpawnPerc > 0.0f && SpawnPerc <= 60.0f)
         {
             //If the spawn percentage is 60%
             //Set the random amounts of individual spawns for this percentage
-            float NSloop = Mathf.Round(Random.Range(2, 4));
-            float NCaravel = Mathf.Round(Random.Range(0, 1));
+            float NSloop = Mathf.Round(UnityEngine.Random.Range(2, 4));
+            float NCaravel = Mathf.Round(UnityEngine.Random.Range(0, 1));
             Vector3 SpawnPos;
             for (int i = 1; i <= NSloop; i++)
             {
@@ -142,8 +134,8 @@ public class Combat : MonoBehaviour {
                 //Set the spawn position to the centre (where the player spawns)
                 SpawnPos = transform.position;
                 //Set x to be a random number between 5 and 20 positive or negative
-                SpawnPos.x += (Mathf.Round(Random.Range(0.0f, 100.0f)) <= 50.0f ? Random.Range(5.0f, 20.0f) : Random.Range(-5.0f, -20.0f));
-                SpawnPos.z += (Mathf.Round(Random.Range(0.0f, 100.0f)) <= 50.0f ? Random.Range(5.0f, 20.0f) : Random.Range(-5.0f, -20.0f));
+                SpawnPos.x += (Mathf.Round(UnityEngine.Random.Range(0.0f, 100.0f)) <= 50.0f ? UnityEngine.Random.Range(5.0f, 20.0f) : UnityEngine.Random.Range(-5.0f, -20.0f));
+                SpawnPos.z += (Mathf.Round(UnityEngine.Random.Range(0.0f, 100.0f)) <= 50.0f ? UnityEngine.Random.Range(5.0f, 20.0f) : UnityEngine.Random.Range(-5.0f, -20.0f));
                 //Set the Spawned variable to be equal to the new ship
                 Spawned = Instantiate(Sloop, SpawnPos, transform.rotation);
             }
@@ -153,8 +145,8 @@ public class Combat : MonoBehaviour {
                 //Set the spawn position to the centre (where the player spawns)
                 SpawnPos = transform.position;
                 //Set x to be a random number between 5 and 20 positive or negative
-                SpawnPos.x += (Mathf.Round(Random.Range(0.0f, 100.0f)) <= 50.0f ? Random.Range(5.0f, 20.0f) : Random.Range(-5.0f, -20.0f));
-                SpawnPos.z += (Mathf.Round(Random.Range(0.0f, 100.0f)) <= 50.0f ? Random.Range(5.0f, 20.0f) : Random.Range(-5.0f, -20.0f));
+                SpawnPos.x += (Mathf.Round(UnityEngine.Random.Range(0.0f, 100.0f)) <= 50.0f ? UnityEngine.Random.Range(5.0f, 20.0f) : UnityEngine.Random.Range(-5.0f, -20.0f));
+                SpawnPos.z += (Mathf.Round(UnityEngine.Random.Range(0.0f, 100.0f)) <= 50.0f ? UnityEngine.Random.Range(5.0f, 20.0f) : UnityEngine.Random.Range(-5.0f, -20.0f));
                 //Set the Spawned variable to be equal to the new ship
                 Spawned = Instantiate(Caravel, SpawnPos, transform.rotation);
             }
@@ -163,9 +155,9 @@ public class Combat : MonoBehaviour {
         }
         else if (SpawnPerc > 60.0f && SpawnPerc <= 90.0f)
         {
-            float NSloop = Mathf.Round(Random.Range(2, 6));
-            float NCaravel = Mathf.Round(Random.Range(1, 3));
-            float NBrigantine = Mathf.Round(Random.Range(0, 1));
+            float NSloop = Mathf.Round(UnityEngine.Random.Range(2, 6));
+            float NCaravel = Mathf.Round(UnityEngine.Random.Range(1, 3));
+            float NBrigantine = Mathf.Round(UnityEngine.Random.Range(0, 1));
             Vector3 SpawnPos;
             for (int i = 1; i <= NSloop; i++)
             {
@@ -173,8 +165,8 @@ public class Combat : MonoBehaviour {
                 //Set the spawn position to the centre (where the player spawns)
                 SpawnPos = transform.position;
                 //Set x to be a random number between 5 and 20 positive or negative
-                SpawnPos.x += (Mathf.Round(Random.Range(0.0f, 100.0f)) <= 50.0f ? Random.Range(5.0f, 20.0f) : Random.Range(-5.0f, -20.0f));
-                SpawnPos.z += (Mathf.Round(Random.Range(0.0f, 100.0f)) <= 50.0f ? Random.Range(5.0f, 20.0f) : Random.Range(-5.0f, -20.0f));
+                SpawnPos.x += (Mathf.Round(UnityEngine.Random.Range(0.0f, 100.0f)) <= 50.0f ? UnityEngine.Random.Range(5.0f, 20.0f) : UnityEngine.Random.Range(-5.0f, -20.0f));
+                SpawnPos.z += (Mathf.Round(UnityEngine.Random.Range(0.0f, 100.0f)) <= 50.0f ? UnityEngine.Random.Range(5.0f, 20.0f) : UnityEngine.Random.Range(-5.0f, -20.0f));
                 //Set the Spawned variable to be equal to the new ship
                 Spawned = Instantiate(Sloop, SpawnPos, transform.rotation);
             }
@@ -184,8 +176,8 @@ public class Combat : MonoBehaviour {
                 //Set the spawn position to the centre (where the player spawns)
                 SpawnPos = transform.position;
                 //Set x to be a random number between 5 and 20 positive or negative
-                SpawnPos.x += (Mathf.Round(Random.Range(0.0f, 100.0f)) <= 50.0f ? Random.Range(5.0f, 20.0f) : Random.Range(-5.0f, -20.0f));
-                SpawnPos.z += (Mathf.Round(Random.Range(0.0f, 100.0f)) <= 50.0f ? Random.Range(5.0f, 20.0f) : Random.Range(-5.0f, -20.0f));
+                SpawnPos.x += (Mathf.Round(UnityEngine.Random.Range(0.0f, 100.0f)) <= 50.0f ? UnityEngine.Random.Range(5.0f, 20.0f) : UnityEngine.Random.Range(-5.0f, -20.0f));
+                SpawnPos.z += (Mathf.Round(UnityEngine.Random.Range(0.0f, 100.0f)) <= 50.0f ? UnityEngine.Random.Range(5.0f, 20.0f) : UnityEngine.Random.Range(-5.0f, -20.0f));
                 //Set the Spawned variable to be equal to the new ship
                 Spawned = Instantiate(Caravel, SpawnPos, transform.rotation);
             }
@@ -195,8 +187,8 @@ public class Combat : MonoBehaviour {
                 //Set the spawn position to the centre (where the player spawns)
                 SpawnPos = transform.position;
                 //Set x to be a random number between 5 and 20 positive or negative
-                SpawnPos.x += (Mathf.Round(Random.Range(0.0f, 100.0f)) <= 50.0f ? Random.Range(5.0f, 20.0f) : Random.Range(-5.0f, -20.0f));
-                SpawnPos.z += (Mathf.Round(Random.Range(0.0f, 100.0f)) <= 50.0f ? Random.Range(5.0f, 20.0f) : Random.Range(-5.0f, -20.0f));
+                SpawnPos.x += (Mathf.Round(UnityEngine.Random.Range(0.0f, 100.0f)) <= 50.0f ? UnityEngine.Random.Range(5.0f, 20.0f) : UnityEngine.Random.Range(-5.0f, -20.0f));
+                SpawnPos.z += (Mathf.Round(UnityEngine.Random.Range(0.0f, 100.0f)) <= 50.0f ? UnityEngine.Random.Range(5.0f, 20.0f) : UnityEngine.Random.Range(-5.0f, -20.0f));
                 //Set the Spawned variable to be equal to the new ship
                 Spawned = Instantiate(Brigantine, SpawnPos, transform.rotation);
             }
@@ -206,7 +198,7 @@ public class Combat : MonoBehaviour {
         else if (SpawnPerc > 90.0f && SpawnPerc <= 100.0f)
         {
             float NSloop = 7;
-            float NCaravel = Mathf.Round(Random.Range(2, 6));
+            float NCaravel = Mathf.Round(UnityEngine.Random.Range(2, 6));
             float NBrigantine = 2;
             Vector3 SpawnPos;
             SpawnPos.y = 0.01000637f;
@@ -216,8 +208,8 @@ public class Combat : MonoBehaviour {
                 //Set the spawn position to the centre (where the player spawns)
                 SpawnPos = transform.position;
                 //Set x to be a random number between 5 and 20 positive or negative
-                SpawnPos.x += (Mathf.Round(Random.Range(0.0f, 100.0f)) <= 50.0f ? Random.Range(5.0f, 20.0f) : Random.Range(-5.0f, -20.0f));
-                SpawnPos.z += (Mathf.Round(Random.Range(0.0f, 100.0f)) <= 50.0f ? Random.Range(5.0f, 20.0f) : Random.Range(-5.0f, -20.0f));
+                SpawnPos.x += (Mathf.Round(UnityEngine.Random.Range(0.0f, 100.0f)) <= 50.0f ? UnityEngine.Random.Range(5.0f, 20.0f) : UnityEngine.Random.Range(-5.0f, -20.0f));
+                SpawnPos.z += (Mathf.Round(UnityEngine.Random.Range(0.0f, 100.0f)) <= 50.0f ? UnityEngine.Random.Range(5.0f, 20.0f) : UnityEngine.Random.Range(-5.0f, -20.0f));
                 //Set the Spawned variable to be equal to the new ship
                 Spawned = Instantiate(Sloop, SpawnPos, transform.rotation);
             }
@@ -227,8 +219,8 @@ public class Combat : MonoBehaviour {
                 //Set the spawn position to the centre (where the player spawns)
                 SpawnPos = transform.position;
                 //Set x to be a random number between 5 and 20 positive or negative
-                SpawnPos.x += (Mathf.Round(Random.Range(0.0f, 100.0f)) <= 50.0f ? Random.Range(5.0f, 20.0f) : Random.Range(-5.0f, -20.0f));
-                SpawnPos.z += (Mathf.Round(Random.Range(0.0f, 100.0f)) <= 50.0f ? Random.Range(5.0f, 20.0f) : Random.Range(-5.0f, -20.0f));
+                SpawnPos.x += (Mathf.Round(UnityEngine.Random.Range(0.0f, 100.0f)) <= 50.0f ? UnityEngine.Random.Range(5.0f, 20.0f) : UnityEngine.Random.Range(-5.0f, -20.0f));
+                SpawnPos.z += (Mathf.Round(UnityEngine.Random.Range(0.0f, 100.0f)) <= 50.0f ? UnityEngine.Random.Range(5.0f, 20.0f) : UnityEngine.Random.Range(-5.0f, -20.0f));
                 //Set the Spawned variable to be equal to the new ship
                 Spawned = Instantiate(Caravel, SpawnPos, transform.rotation);
             }
@@ -238,8 +230,8 @@ public class Combat : MonoBehaviour {
                 //Set the spawn position to the centre (where the player spawns)
                 SpawnPos = transform.position;
                 //Set x to be a random number between 5 and 20 positive or negative
-                SpawnPos.x += (Mathf.Round(Random.Range(0.0f, 100.0f)) <= 50.0f ? Random.Range(5.0f, 20.0f) : Random.Range(-5.0f, -20.0f));
-                SpawnPos.z += (Mathf.Round(Random.Range(0.0f, 100.0f)) <= 50.0f ? Random.Range(5.0f, 20.0f) : Random.Range(-5.0f, -20.0f));
+                SpawnPos.x += (Mathf.Round(UnityEngine.Random.Range(0.0f, 100.0f)) <= 50.0f ? UnityEngine.Random.Range(5.0f, 20.0f) : UnityEngine.Random.Range(-5.0f, -20.0f));
+                SpawnPos.z += (Mathf.Round(UnityEngine.Random.Range(0.0f, 100.0f)) <= 50.0f ? UnityEngine.Random.Range(5.0f, 20.0f) : UnityEngine.Random.Range(-5.0f, -20.0f));
                 //Set the Spawned variable to be equal to the new ship
                 Spawned = Instantiate(Brigantine, SpawnPos, transform.rotation);
             }
@@ -293,7 +285,7 @@ public class Combat : MonoBehaviour {
         HHP.text = "Hull Health: " + Mathf.Round(PlayerPrefs.GetFloat ("HHP")) + " / " + Mathf.Round(PlayerPrefs.GetFloat("MHHP"));
         SHP.text = "Sail Health: " + Mathf.Round(PlayerPrefs.GetFloat ("SHP")) + " / " + Mathf.Round(PlayerPrefs.GetFloat("MSHP"));
         //Set the cargo UI text to be equal to the relevant player prefs values
-        Cargo.text = "Cargo: " + currentCargo + " / " + PlayerPrefs.GetInt("Cargo");
+        Cargo.text = "Cargo: " + Inventory.Sum(i => i.Count) + " / " + PlayerPrefs.GetInt("Cargo");
         if (Time.time >= CannonCD1Time)
         {
             //Check if the first cannon has cooled down, if so set the boolean to false to allow firing again
@@ -382,11 +374,11 @@ public class Combat : MonoBehaviour {
             gameObject.transform.GetChild(1).GetComponent<AudioSource>().Play();
             //Give the cannonballs damage based on the formula supplied
             BallClone1.GetComponent<CannonBall>().LoadDamage
-                ((CannonBallDamage + (CannonBallDamage * Random.Range(-0.3f, 0.03f))) * Quality);
+                ((CannonBallDamage + (CannonBallDamage * UnityEngine.Random.Range(-0.3f, 0.03f))) * Quality);
             BallClone2.GetComponent<CannonBall>().LoadDamage
-                ((CannonBallDamage + (CannonBallDamage * Random.Range(-0.3f, 0.03f))) * Quality);
+                ((CannonBallDamage + (CannonBallDamage * UnityEngine.Random.Range(-0.3f, 0.03f))) * Quality);
             BallClone3.GetComponent<CannonBall>().LoadDamage
-                ((CannonBallDamage + (CannonBallDamage * Random.Range(-0.3f, 0.03f))) * Quality);
+                ((CannonBallDamage + (CannonBallDamage * UnityEngine.Random.Range(-0.3f, 0.03f))) * Quality);
         }
     }
 
@@ -421,11 +413,11 @@ public class Combat : MonoBehaviour {
             gameObject.transform.GetChild(2).GetComponent<AudioSource>().Play();
             //Give the cannonballs damage based on the formula supplied
             BallClone1.GetComponent<CannonBall>().LoadDamage
-                ((CannonBallDamage + (CannonBallDamage * Random.Range(-0.3f, 0.03f))) * Quality);
+                ((CannonBallDamage + (CannonBallDamage * UnityEngine.Random.Range(-0.3f, 0.03f))) * Quality);
             BallClone2.GetComponent<CannonBall>().LoadDamage
-                ((CannonBallDamage + (CannonBallDamage * Random.Range(-0.3f, 0.03f))) * Quality);
+                ((CannonBallDamage + (CannonBallDamage * UnityEngine.Random.Range(-0.3f, 0.03f))) * Quality);
             BallClone3.GetComponent<CannonBall>().LoadDamage
-                ((CannonBallDamage + (CannonBallDamage * Random.Range(-0.3f, 0.03f))) * Quality);
+                ((CannonBallDamage + (CannonBallDamage * UnityEngine.Random.Range(-0.3f, 0.03f))) * Quality);
         }
     }
     private void OnTriggerEnter(Collider other)
@@ -448,50 +440,22 @@ public class Combat : MonoBehaviour {
             //If the player collided with loot
             //Play the loot audio clip
             LootAudio.Play();
-            if (currentCargo < PlayerPrefs.GetInt("Cargo"))
+            if (Inventory.Sum(i => i.Count) < PlayerPrefs.GetInt("Cargo"))
             {
                 //If there is space enough for cargo
                 Debug.Log("Looted!");
                 //Get the loot type from the object the player collided with
-                string LootType = other.GetComponent<LootCrate>().GiveType();
-                //Switch to find the loot type and add to the local loot variable counter
-                switch (LootType)
+                Assets.Scripts.LootType LootType = other.GetComponent<LootCrate>().GiveType();
+                // Find the element in inventory and add it
+                var grain = Inventory.FirstOrDefault(i => i.LootName == LootType);
+                if (grain == null)
                 {
-                    case "Grain":
-                        ++Grain;
-                        break;
-                    case "Fish":
-                        ++Fish;
-                        break;
-                    case "Oil":
-                        ++Oil;
-                        break;
-                    case "Wood":
-                        ++Wood;
-                        break;
-                    case "Brick":
-                        ++Brick;
-                        break;
-                    case "Iron":
-                        ++Iron;
-                        break;
-                    case "Rum":
-                        ++Rum;
-                        break;
-                    case "Silk":
-                        ++Silk;
-                        break;
-                    case "Silverware":
-                        ++Silverware;
-                        break;
-                    case "Emerald":
-                        ++Emerald;
-                        break;
-                    default:
-                        break;
+                    grain = new Item(DateTimeOffset.UtcNow, LootType, 1);
                 }
-                //Add one to the cargo amount
-                ++currentCargo;
+                else
+                {
+                    grain.Count++;
+                }
                 //Destroy the cargo item
                 Destroy(other.gameObject);
             }
@@ -505,7 +469,7 @@ public class Combat : MonoBehaviour {
     public void TakeDamage(float Amount)
     {
         //Called by enemy cannon balls when they collide with the players ship
-        if (Random.Range(0.0f, 100.0f) <= 20.0f)
+        if (UnityEngine.Random.Range(0.0f, 100.0f) <= 20.0f)
         {
             //If the random number generated is 20% then apply damage to the sail health instead of the hull hp
             PlayerPrefs.SetFloat("SHP", PlayerPrefs.GetFloat("SHP") - Amount);
@@ -538,17 +502,6 @@ public class Combat : MonoBehaviour {
     void ManagementLose()
     {
         //Called when the player dies
-        //Set all local cargo items to 0 (delete them)
-        Grain = 0;
-        Fish = 0;
-        Oil = 0;
-        Wood = 0;
-        Brick = 0;
-        Iron = 0;
-        Rum = 0;
-        Silk = 0;
-        Silverware = 0;
-        Emerald = 0;
         //Remove 25% from the current gold amount
         float currGold = PlayerPrefs.GetInt("Gold") * 0.75f;
         //Set gold amount to new value
@@ -559,18 +512,25 @@ public class Combat : MonoBehaviour {
     void ManagementWin()
     {
         //Call when the player wins
-        //Set all relevant playerpref values to the local cargo (save them)
-        PlayerPrefs.SetInt("Gold", PlayerPrefs.GetInt("Gold") + Gold);
-        PlayerPrefs.SetInt("Grain", PlayerPrefs.GetInt("Grain") + Grain);
-        PlayerPrefs.SetInt("Fish", PlayerPrefs.GetInt("Fish") + Fish);
-        PlayerPrefs.SetInt("Oil", PlayerPrefs.GetInt("Oil") + Oil);
-        PlayerPrefs.SetInt("Wood", PlayerPrefs.GetInt("Wood") + Wood);
-        PlayerPrefs.SetInt("Brick", PlayerPrefs.GetInt("Brick") + Brick);
-        PlayerPrefs.SetInt("Iron", PlayerPrefs.GetInt("Iron") + Iron);
-        PlayerPrefs.SetInt("Rum", PlayerPrefs.GetInt("Rum") + Rum);
-        PlayerPrefs.SetInt("Silk", PlayerPrefs.GetInt("Silk") + Silk);
-        PlayerPrefs.SetInt("Silverware", PlayerPrefs.GetInt("Silverware") + Silverware);
-        PlayerPrefs.SetInt("Emerald", PlayerPrefs.GetInt("Emerald") + Emerald);
+        // Set the inventory playerpref
+        var currentInventory = PlayerPrefs.GetString("Inventory");
+        var inventory = JsonConvert.DeserializeObject<Inventory>(currentInventory);
+       
+        foreach (var item in Inventory)
+        {
+            var existingItem = inventory.Items.FirstOrDefault(i => i.LootName == item.LootName);
+            if (existingItem == null)
+            {
+                inventory.Items.Add(item);
+            }
+            else
+            {
+                existingItem.Count += item.Count;
+                existingItem.Obtained = item.Obtained;
+            }
+        }
+
+        PlayerPrefs.SetString("Inventory", JsonConvert.SerializeObject(inventory));
         //Load the management scene
         SceneManager.LoadScene(0);
     }
