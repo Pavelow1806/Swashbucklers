@@ -89,7 +89,7 @@ public class ManagementTap : MonoBehaviour {
         GameObject.Find("Test").GetComponent<Text>().text = ("Quality: " + PlayerPrefs.GetFloat("fQuality") + ",\n Turn Speed: " + PlayerPrefs.GetFloat("Turn") + ",\n Damage: " + PlayerPrefs.GetFloat("fDamage") + ",\n Max Hull HP: " + PlayerPrefs.GetFloat("MHHP") +
             ",\n Hull HP: " + PlayerPrefs.GetFloat("HHP") + ",\n Max Sail HP: " + PlayerPrefs.GetFloat("MSHP") + ",\n Sail HP: " + PlayerPrefs.GetFloat("SHP"));
         //Update the gold amount displayed to the player in the management scene
-        GameObject.Find("Gold").GetComponent<Text>().text = PlayerPrefs.GetInt("Gold") + " Gold";
+        GameObject.Find("Gold").GetComponent<Text>().text = PlayerPrefs.GetInt("Gold").ToString();
         //The following IF statements query whether the UI is active (displayed) as well as the sub-category and if so update the UI text:
             //Update Market UI text with relevant PlayerPref variables:
         if (UI.activeInHierarchy == true && Market.activeInHierarchy == true)
@@ -99,28 +99,6 @@ public class ManagementTap : MonoBehaviour {
             //Update Shipyard UI text with relevant PlayerPref variables:
         if (UI.activeInHierarchy == true && Shipyard.activeInHierarchy == true)
         {
-            //Display the current upgrade level for each category
-            GameObject.Find("Sails").transform.GetChild(2).GetComponent<Text>().text = PlayerPrefs.GetInt("Sails").ToString() + " / 10";
-            GameObject.Find("CBDamage").transform.GetChild(2).GetComponent<Text>().text = PlayerPrefs.GetInt("Damage").ToString() + " / 10";
-            GameObject.Find("Hull").transform.GetChild(2).GetComponent<Text>().text = PlayerPrefs.GetInt("Hull").ToString() + " / 10";
-            GameObject.Find("Storage").transform.GetChild(2).GetComponent<Text>().text = PlayerPrefs.GetInt("Storage").ToString() + " / 10";
-            GameObject.Find("Quality").transform.GetChild(2).GetComponent<Text>().text = PlayerPrefs.GetInt("Quality").ToString() + " / 10";
-
-            //Display cost of upgrade for each upgrade category
-            GameObject.Find("Sails").transform.GetChild(4).GetComponent<Text>().text = 
-                PlayerPrefs.GetInt("Sails") < 10 ? (PlayerPrefs.GetInt("Sails") * 5).ToString() + "g" : "MAX";
-
-            GameObject.Find("CBDamage").transform.GetChild(4).GetComponent<Text>().text =
-                PlayerPrefs.GetInt("Damage") < 10 ? (PlayerPrefs.GetInt("Damage") * 6).ToString() + "g" : "MAX";
-
-            GameObject.Find("Hull").transform.GetChild(4).GetComponent<Text>().text =
-                PlayerPrefs.GetInt("Hull") < 10 ? (PlayerPrefs.GetInt("Hull") * 7).ToString() + "g" : "MAX";
-
-            GameObject.Find("Storage").transform.GetChild(4).GetComponent<Text>().text =
-                PlayerPrefs.GetInt("Storage") < 10 ? (PlayerPrefs.GetInt("Storage") * 8).ToString() + "g" : "MAX";
-
-            GameObject.Find("Quality").transform.GetChild(4).GetComponent<Text>().text =
-                PlayerPrefs.GetInt("Quality") < 10 ? (PlayerPrefs.GetInt("Quality") * 9).ToString() + "g" : "MAX";
 
         }
         //Move menu AI-controlled ship:

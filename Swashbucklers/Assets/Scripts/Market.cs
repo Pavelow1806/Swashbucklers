@@ -30,6 +30,8 @@ public class Market : MonoBehaviour
     public Sprite Silk;
     public Sprite Silverware;
     public Sprite Emerald;
+    public AudioSource SellStuff;
+    public AudioSource ClickSound; 
     // Start is called before the first frame update
     void Start()
     {
@@ -44,6 +46,7 @@ public class Market : MonoBehaviour
         inv.Items.Add(new Item(System.DateTimeOffset.UtcNow, LootType.Emerald, 5));
         inv.Items.Add(new Item(System.DateTimeOffset.UtcNow, LootType.Rum, 52));
         PlayerPrefs.SetString("Inventory", JsonConvert.SerializeObject(inv));
+        PlayerPrefs.Save();
         init();
     }
     private void init()
@@ -66,6 +69,9 @@ public class Market : MonoBehaviour
             var image = addedItemSlots[i].GetComponent<Transform>().GetChild(0).GetComponent<Image>();
             image.enabled = true;
             image.sprite = GetSprite(item.LootName);
+            var textComponent = addedItemSlots[i].GetComponent<Transform>().GetChild(1).GetComponent<TextMeshProUGUI>();
+            textComponent.text = item.Count.ToString();
+            textComponent.enabled = true;
             i++;
         }
         for (int x = i; x < addedItemSlots.Count - 1; x++)
@@ -74,6 +80,9 @@ public class Market : MonoBehaviour
             var image = addedItemSlots[x].GetComponent<Transform>().GetChild(0).GetComponent<Image>();
             image.enabled = false;
             image.sprite = null;
+            var textComponent = addedItemSlots[x].GetComponent<Transform>().GetChild(1).GetComponent<TextMeshProUGUI>();
+            textComponent.text = "";
+            textComponent.enabled = true;
         }
         ItemCountValue.text = $"{items.Sum(i => i.Count)}";
         TotalValue.text = $"{items.Sum(i => (int)i.LootName * i.Count)}";
@@ -96,6 +105,8 @@ public class Market : MonoBehaviour
         }
         var inventory = new Inventory();
         PlayerPrefs.SetString("Inventory", JsonConvert.SerializeObject(inventory));
+        PlayerPrefs.Save();
+        SellStuff.Play();
         DeselectAll();
         init();
     }
@@ -109,13 +120,17 @@ public class Market : MonoBehaviour
             inventory.Items = inventory.Items.Where(i => i.LootName != selectedItem.LootName).ToList();
         }
         PlayerPrefs.SetString("Inventory", JsonConvert.SerializeObject(inventory));
+        PlayerPrefs.Save();
+        SellStuff.Play();
         DeselectAll();
         init();
     }
     public void Click(GameObject clicked)
     {
         bool enabled = !clicked.GetComponent<Transform>().GetChild(2).GetComponent<Image>().enabled;
+        DeselectAll();
         clicked.GetComponent<Transform>().GetChild(2).GetComponent<Image>().enabled = enabled;
+        ClickSound.Play();
         if (enabled)
         {
             SelectedItemContainer = clicked.GetComponent<ItemContainer>();

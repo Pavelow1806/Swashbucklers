@@ -394,6 +394,7 @@
 "Assets/Scripts/LootCrate.cs"
 "Assets/Scripts/ManagementTap.cs"
 "Assets/Scripts/Market.cs"
+"Assets/Scripts/Shipyard.cs"
 "Assets/Scripts/UIFunctions.cs"
 -langversion:9.0
 
