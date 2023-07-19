@@ -58,17 +58,23 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\2022.3.4f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\brig_pack_Unity5\scripts\FollowShip.cs" />
     <Compile Include="Assets\Scripts\EnemyAI.cs" />
     <Compile Include="Assets\Scripts\Banner.cs" />
     <Compile Include="Assets\Scripts\Market.cs" />
     <Compile Include="Assets\ItemContainer.cs" />
     <Compile Include="Assets\Island\Scripts\WaterScroller.cs" />
     <Compile Include="Assets\Island\Scripts\FixedTiling.cs" />
+    <Compile Include="Assets\WPG\Scripts\SimpleMovement.cs" />
+    <Compile Include="Assets\brig_pack_Unity5\scripts\Controller.cs" />
+    <Compile Include="Assets\WPG\Scripts\Ship.cs" />
     <Compile Include="Assets\Scripts\Item.cs" />
     <Compile Include="Assets\Scripts\Shipyard.cs" />
     <Compile Include="Assets\Scripts\Inventory.cs" />
     <Compile Include="Assets\Scripts\UIFunctions.cs" />
+    <Compile Include="Assets\WPG\Scripts\Sail.cs" />
     <Compile Include="Assets\Scripts\CannonBall.cs" />
+    <Compile Include="Assets\WPG\Scripts\UIConnector.cs" />
     <Compile Include="Assets\Scripts\CannonBallEnemy.cs" />
     <Compile Include="Assets\Scripts\ManagementTap.cs" />
     <Compile Include="Assets\Scripts\LootCrate.cs" />
@@ -83,12 +89,14 @@
     <None Include="Assets\GoogleMobileAds\GoogleMobileAds.Ump.iOS.dll" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
     <None Include="Assets\GoogleMobileAds\GoogleMobileAds.dll" />
+    <None Include="Assets\brig_pack_Unity5\Guide.txt" />
     <None Include="Assets\GoogleMobileAds\GoogleMobileAds.iOS.dll" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Mobile.cginc" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF SSD.shader" />
     <None Include="Assets\MiningIcons\ReadMe.txt" />
     <None Include="Assets\PiratesIconsPack\ReadMe.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface-Mobile.shader" />
+    <None Include="Assets\brig_pack_Unity5\scripts\Standard_cull_off.shader" />
     <None Include="Assets\GoogleMobileAds\GoogleMobileAds.Core.dll" />
     <None Include="Assets\GoogleMobileAds\link.xml" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface.shader" />
@@ -106,6 +114,7 @@
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
     <None Include="Assets\GoogleMobileAds\GoogleMobileAds.Unity.dll" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Masking.shader" />
+    <None Include="Assets\brig_pack_Unity5\Standard Assets\Skyboxes\_skybox info.txt" />
     <None Include="Assets\GoogleMobileAds\GoogleMobileAds.Android.dll" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF Overlay.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Mobile.shader" />

@@ -1,0 +1,137 @@
+fileFormatVersion: 2
+guid: 494801ab786dd3a40b143fde9a44f5c1
+ModelImporter:
+  serializedVersion: 16
+  fileIDToRecycleName:
+    100000: boat
+    100002: Bones
+    100004: Dock
+    100006: Grass_island
+    100008: House1
+    100010: House2
+    100012: House3
+    100014: Island
+    100016: //RootNode
+    100018: Palm
+    100020: Planks
+    100022: Plant01
+    100024: Plant02
+    100026: Rocks
+    100028: Rocks_small
+    100030: Starfish2
+    400000: boat
+    400002: Bones
+    400004: Dock
+    400006: Grass_island
+    400008: House1
+    400010: House2
+    400012: House3
+    400014: Island
+    400016: //RootNode
+    400018: Palm
+    400020: Planks
+    400022: Plant01
+    400024: Plant02
+    400026: Rocks
+    400028: Rocks_small
+    400030: Starfish2
+    2300000: boat
+    2300002: Bones
+    2300004: Dock
+    2300006: Grass_island
+    2300008: House1
+    2300010: House2
+    2300012: House3
+    2300014: Island
+    2300016: Palm
+    2300018: Planks
+    2300020: Plant01
+    2300022: Plant02
+    2300024: Rocks
+    2300026: Rocks_small
+    2300028: Starfish2
+    3300000: boat
+    3300002: Bones
+    3300004: Dock
+    3300006: Grass_island
+    3300008: House1
+    3300010: House2
+    3300012: House3
+    3300014: Island
+    3300016: Palm
+    3300018: Planks
+    3300020: Plant01
+    3300022: Plant02
+    3300024: Rocks
+    3300026: Rocks_small
+    3300028: Starfish2
+    4300000: Island
+    4300002: Bones
+    4300004: Grass_island
+    4300006: Plant01
+    4300008: Rocks_small
+    4300010: boat
+    4300012: Planks
+    4300014: Starfish2
+    4300016: Plant02
+    4300018: Rocks
+    4300020: Palm
+    4300022: Dock
+    4300024: House1
+    4300026: House2
+    4300028: House3
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: .200000003
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  additionalBone: 1
+  userData: 

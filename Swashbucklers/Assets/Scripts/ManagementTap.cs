@@ -55,11 +55,11 @@ public class ManagementTap : MonoBehaviour {
         if(!PlayerPrefs.HasKey("Cargo")) PlayerPrefs.SetInt("Cargo", 10); //Combat-scene Cargo max capacity
 
         //Shipyard Upgrade PlayerPref Variables:
-        if(!PlayerPrefs.HasKey("Sails")) PlayerPrefs.SetInt("Sails", 1); 
-        if(!PlayerPrefs.HasKey("Damage")) PlayerPrefs.SetInt("Damage", 1);
-        if(!PlayerPrefs.HasKey("Hull")) PlayerPrefs.SetInt("Hull", 1);
-        if(!PlayerPrefs.HasKey("Storage")) PlayerPrefs.SetInt("Storage", 1);
-        if(!PlayerPrefs.HasKey("Quality")) PlayerPrefs.SetInt("Quality", 1);
+        if(!PlayerPrefs.HasKey("Sails")) PlayerPrefs.SetInt("Sails", 0); 
+        if(!PlayerPrefs.HasKey("Damage")) PlayerPrefs.SetInt("Damage", 0);
+        if(!PlayerPrefs.HasKey("Hull")) PlayerPrefs.SetInt("Hull", 0);
+        if(!PlayerPrefs.HasKey("Storage")) PlayerPrefs.SetInt("Storage", 0);
+        if(!PlayerPrefs.HasKey("Quality")) PlayerPrefs.SetInt("Quality", 0);
 
         //Initialise all Inventory Items to 0
         if(!PlayerPrefs.HasKey("Gold")) PlayerPrefs.SetInt("Gold", 0);

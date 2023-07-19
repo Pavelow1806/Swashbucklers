@@ -33,28 +33,28 @@ public class Shipyard : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        SailLevel = Sails.transform.Find("Level").GetComponent<Text>();
+        SailLevel = Sails.transform.Find("Upgrade").Find("Level").Find("Level").GetComponent<Text>();
         SailProgress = Sails.transform.Find("Upgrade").Find("Progress").GetComponent<Image>();
-        SailCost = Sails.transform.Find("Cost").Find("Cost").GetComponent<Text>();
-        CBDamageLevel = CBDamage.transform.Find("Level").GetComponent<Text>();
+        SailCost = Sails.transform.Find("Upgrade").Find("Cost").Find("Cost").GetComponent<Text>();
+        CBDamageLevel = CBDamage.transform.Find("Upgrade").Find("Level").Find("Level").GetComponent<Text>();
         CBDamageProgress = CBDamage.transform.Find("Upgrade").Find("Progress").GetComponent<Image>();
-        CBDamageCost = CBDamage.transform.Find("Cost").Find("Cost").GetComponent<Text>();
-        HullLevel = Hull.transform.Find("Level").GetComponent<Text>();
+        CBDamageCost = CBDamage.transform.Find("Upgrade").Find("Cost").Find("Cost").GetComponent<Text>();
+        HullLevel = Hull.transform.Find("Upgrade").Find("Level").Find("Level").GetComponent<Text>();
         HullProgress = Hull.transform.Find("Upgrade").Find("Progress").GetComponent<Image>();
-        HullCost = Hull.transform.Find("Cost").Find("Cost").GetComponent<Text>();
-        StorageLevel = Storage.transform.Find("Level").GetComponent<Text>();
+        HullCost = Hull.transform.Find("Upgrade").Find("Cost").Find("Cost").GetComponent<Text>();
+        StorageLevel = Storage.transform.Find("Upgrade").Find("Level").Find("Level").GetComponent<Text>();
         StorageProgress = Storage.transform.Find("Upgrade").Find("Progress").GetComponent<Image>();
-        StorageCost = Storage.transform.Find("Cost").Find("Cost").GetComponent<Text>();
-        QualityLevel = Quality.transform.Find("Level").GetComponent<Text>();
+        StorageCost = Storage.transform.Find("Upgrade").Find("Cost").Find("Cost").GetComponent<Text>();
+        QualityLevel = Quality.transform.Find("Upgrade").Find("Level").Find("Level").GetComponent<Text>();
         QualityProgress = Quality.transform.Find("Upgrade").Find("Progress").GetComponent<Image>();
-        QualityCost = Quality.transform.Find("Cost").Find("Cost").GetComponent<Text>();
+        QualityCost = Quality.transform.Find("Upgrade").Find("Cost").Find("Cost").GetComponent<Text>();
 
         //Display the current upgrade level for each category
-        SailLevel.text = PlayerPrefs.GetInt("Sails").ToString() + " / 10";
-        CBDamageLevel.text = PlayerPrefs.GetInt("Damage").ToString() + " / 10";
-        HullLevel.text = PlayerPrefs.GetInt("Hull").ToString() + " / 10";
-        StorageLevel.text = PlayerPrefs.GetInt("Storage").ToString() + " / 10";
-        QualityLevel.text = PlayerPrefs.GetInt("Quality").ToString() + " / 10";
+        SailLevel.text = PlayerPrefs.GetInt("Sails").ToString();
+        CBDamageLevel.text = PlayerPrefs.GetInt("Damage").ToString();
+        HullLevel.text = PlayerPrefs.GetInt("Hull").ToString();
+        StorageLevel.text = PlayerPrefs.GetInt("Storage").ToString();
+        QualityLevel.text = PlayerPrefs.GetInt("Quality").ToString();
 
         SailProgress.fillAmount = (float)PlayerPrefs.GetInt("Sails") / 10f;
         CBDamageProgress.fillAmount = (float)PlayerPrefs.GetInt("Damage") / 10f;
@@ -81,15 +81,15 @@ public class Shipyard : MonoBehaviour
             UpgradeStuff.Play();
             PlayerPrefs.SetInt("Gold", PlayerPrefs.GetInt("Gold") - (PlayerPrefs.GetInt("Sails") * 5));
             PlayerPrefs.SetInt("Sails", PlayerPrefs.GetInt("Sails") + 1);
+            if (PlayerPrefs.GetInt("Sails") == 10)
+                SailProgress.sprite = GoldCircle;
+            else
+                SailProgress.sprite = GreenCircle;
+            PlayerPrefs.SetFloat("Turn", ((PlayerPrefs.GetInt("Sails") / 10) + 1));
+            SailLevel.text = PlayerPrefs.GetInt("Sails").ToString();
+            SailProgress.fillAmount = (float)PlayerPrefs.GetInt("Sails") / 10f;
+            SailCost.text = PlayerPrefs.GetInt("Sails") < 10 ? (PlayerPrefs.GetInt("Sails") * 5).ToString() : "Max";
         }
-        if (PlayerPrefs.GetInt("Sails") == 10)
-            SailProgress.sprite = GoldCircle;
-        else
-            SailProgress.sprite = GreenCircle;
-        PlayerPrefs.SetFloat("Turn", ((PlayerPrefs.GetInt("Sails") / 10) + 1));
-        SailLevel.text = PlayerPrefs.GetInt("Sails").ToString() + " / 10";
-        SailProgress.fillAmount = (float)PlayerPrefs.GetInt("Sails") / 10f;
-        SailCost.text = PlayerPrefs.GetInt("Sails") < 10 ? (PlayerPrefs.GetInt("Sails") * 5).ToString() : "Max";
     }
     public void UpgradeDamage()
     {
@@ -99,15 +99,15 @@ public class Shipyard : MonoBehaviour
             UpgradeStuff.Play();
             PlayerPrefs.SetInt("Gold", PlayerPrefs.GetInt("Gold") - (PlayerPrefs.GetInt("Damage") * 6));
             PlayerPrefs.SetInt("Damage", PlayerPrefs.GetInt("Damage") + 1);
+            if (PlayerPrefs.GetInt("Damage") == 10)
+                CBDamageProgress.sprite = GoldCircle;
+            else
+                CBDamageProgress.sprite = GreenCircle;
+            PlayerPrefs.SetFloat("fDamage", (PlayerPrefs.GetInt("Damage") * 5) + 15);
+            CBDamageLevel.text = PlayerPrefs.GetInt("Damage").ToString();
+            CBDamageProgress.fillAmount = (float)PlayerPrefs.GetInt("Damage") / 10f;
+            CBDamageCost.text = PlayerPrefs.GetInt("Damage") < 10 ? (PlayerPrefs.GetInt("Damage") * 6).ToString() : "Max";
         }
-        if (PlayerPrefs.GetInt("Damage") == 10)
-            CBDamageProgress.sprite = GoldCircle;
-        else
-            CBDamageProgress.sprite = GreenCircle;
-        PlayerPrefs.SetFloat("fDamage", (PlayerPrefs.GetInt("Damage") * 5) + 15);
-        CBDamageLevel.text = PlayerPrefs.GetInt("Damage").ToString() + " / 10";
-        CBDamageProgress.fillAmount = (float)PlayerPrefs.GetInt("Damage") / 10f;
-        CBDamageCost.text = PlayerPrefs.GetInt("Damage") < 10 ? (PlayerPrefs.GetInt("Damage") * 6).ToString() : "Max";
     }
     public void UpgradeHull()
     {
@@ -117,16 +117,16 @@ public class Shipyard : MonoBehaviour
             UpgradeStuff.Play();
             PlayerPrefs.SetInt("Gold", PlayerPrefs.GetInt("Gold") - (PlayerPrefs.GetInt("Hull") * 7));
             PlayerPrefs.SetInt("Hull", PlayerPrefs.GetInt("Hull") + 1);
+            if (PlayerPrefs.GetInt("Hull") == 10)
+                HullProgress.sprite = GoldCircle;
+            else
+                HullProgress.sprite = GreenCircle;
+            PlayerPrefs.SetFloat("MHHP", ((PlayerPrefs.GetInt("Hull") - 1) * 10) + (PlayerPrefs.GetInt("Hull") <= 1 ? 50 : 60));
+            PlayerPrefs.SetFloat("HHP", PlayerPrefs.GetFloat("MHHP"));
+            HullLevel.text = PlayerPrefs.GetInt("Hull").ToString();
+            HullProgress.fillAmount = (float)PlayerPrefs.GetInt("Hull") / 10f;
+            HullCost.text = PlayerPrefs.GetInt("Hull") < 10 ? (PlayerPrefs.GetInt("Hull") * 7).ToString() : "Max";
         }
-        if (PlayerPrefs.GetInt("Hull") == 10)
-            HullProgress.sprite = GoldCircle;
-        else
-            HullProgress.sprite = GreenCircle;
-        PlayerPrefs.SetFloat("MHHP", ((PlayerPrefs.GetInt("Hull") - 1) * 10) + (PlayerPrefs.GetInt("Hull") <= 1 ? 50 : 60));
-        PlayerPrefs.SetFloat("HHP", PlayerPrefs.GetFloat("MHHP"));
-        HullLevel.text = PlayerPrefs.GetInt("Hull").ToString() + " / 10";
-        HullProgress.fillAmount = (float)PlayerPrefs.GetInt("Hull") / 10f;
-        HullCost.text = PlayerPrefs.GetInt("Hull") < 10 ? (PlayerPrefs.GetInt("Hull") * 7).ToString() : "Max";
     }
     public void UpgradeStorage()
     {
@@ -136,15 +136,15 @@ public class Shipyard : MonoBehaviour
             UpgradeStuff.Play();
             PlayerPrefs.SetInt("Gold", PlayerPrefs.GetInt("Gold") - (PlayerPrefs.GetInt("Storage") * 8));
             PlayerPrefs.SetInt("Storage", PlayerPrefs.GetInt("Storage") + 1);
+            if (PlayerPrefs.GetInt("Storage") == 10)
+                StorageProgress.sprite = GoldCircle;
+            else
+                StorageProgress.sprite = GreenCircle;
+            PlayerPrefs.SetInt("Cargo", (PlayerPrefs.GetInt("Storage") * 5) + 5);
+            StorageLevel.text = PlayerPrefs.GetInt("Storage").ToString();
+            StorageProgress.fillAmount = (float)PlayerPrefs.GetInt("Storage") / 10f;
+            StorageCost.text = PlayerPrefs.GetInt("Storage") < 10 ? (PlayerPrefs.GetInt("Storage") * 8).ToString() : "Max";
         }
-        if (PlayerPrefs.GetInt("Storage") == 10)
-            StorageProgress.sprite = GoldCircle;
-        else
-            StorageProgress.sprite = GreenCircle;
-        PlayerPrefs.SetInt("Cargo", (PlayerPrefs.GetInt("Storage") * 5) + 5);
-        StorageLevel.text = PlayerPrefs.GetInt("Storage").ToString() + " / 10";
-        StorageProgress.fillAmount = (float)PlayerPrefs.GetInt("Storage") / 10f;
-        StorageCost.text = PlayerPrefs.GetInt("Storage") < 10 ? (PlayerPrefs.GetInt("Storage") * 8).ToString() : "Max";
     }
     public void UpgradeQuality()
     {
@@ -154,14 +154,14 @@ public class Shipyard : MonoBehaviour
             UpgradeStuff.Play();
             PlayerPrefs.SetInt("Gold", PlayerPrefs.GetInt("Gold") - (PlayerPrefs.GetInt("Quality") * 9));
             PlayerPrefs.SetInt("Quality", PlayerPrefs.GetInt("Quality") + 1);
+            if (PlayerPrefs.GetInt("Quality") == 10)
+                QualityProgress.sprite = GoldCircle;
+            else
+                QualityProgress.sprite = GreenCircle;
+            PlayerPrefs.SetFloat("fQuality", 1.0f - (PlayerPrefs.GetInt("Quality") * 0.05f));
+            QualityLevel.text = PlayerPrefs.GetInt("Quality").ToString();
+            QualityProgress.fillAmount = (float)PlayerPrefs.GetInt("Quality") / 10f;
+            QualityCost.text = PlayerPrefs.GetInt("Quality") < 10 ? (PlayerPrefs.GetInt("Quality") * 9).ToString() : "Max";
         }
-        if (PlayerPrefs.GetInt("Quality") == 10)
-            QualityProgress.sprite = GoldCircle;
-        else
-            QualityProgress.sprite = GreenCircle;
-        PlayerPrefs.SetFloat("fQuality", 1.0f - (PlayerPrefs.GetInt("Quality") * 0.05f));
-        QualityLevel.text = PlayerPrefs.GetInt("Quality").ToString() + " / 10";
-        QualityProgress.fillAmount = (float)PlayerPrefs.GetInt("Quality") / 10f;
-        QualityCost.text = PlayerPrefs.GetInt("Quality") < 10 ? (PlayerPrefs.GetInt("Quality") * 9).ToString() : "Max";
     }
 }

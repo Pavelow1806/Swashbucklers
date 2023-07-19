@@ -379,6 +379,8 @@
 -r:"Library/Bee/artifacts/500b0aE.dag/UnityEngine.XR.LegacyInputHelpers.ref.dll"
 -analyzer:"C:/Program Files/Unity/Hub/Editor/2022.3.4f1/Editor/Data/Tools/Unity.SourceGenerators/Unity.Properties.SourceGenerator.dll"
 -analyzer:"C:/Program Files/Unity/Hub/Editor/2022.3.4f1/Editor/Data/Tools/Unity.SourceGenerators/Unity.SourceGenerators.dll"
+"Assets/brig_pack_Unity5/scripts/Controller.cs"
+"Assets/brig_pack_Unity5/scripts/FollowShip.cs"
 "Assets/Island/Scripts/CharacterMovement.cs"
 "Assets/Island/Scripts/FixedTiling.cs"
 "Assets/Island/Scripts/MouseLook.cs"
@@ -396,6 +398,10 @@
 "Assets/Scripts/Market.cs"
 "Assets/Scripts/Shipyard.cs"
 "Assets/Scripts/UIFunctions.cs"
+"Assets/WPG/Scripts/Sail.cs"
+"Assets/WPG/Scripts/Ship.cs"
+"Assets/WPG/Scripts/SimpleMovement.cs"
+"Assets/WPG/Scripts/UIConnector.cs"
 -langversion:9.0
 
 /deterministic
