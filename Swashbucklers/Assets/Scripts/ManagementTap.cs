@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.AI;
 using TMPro;
+using Newtonsoft.Json;
+using Assets.Scripts;
 
 public class ManagementTap : MonoBehaviour {
 
@@ -61,16 +63,7 @@ public class ManagementTap : MonoBehaviour {
 
         //Initialise all Inventory Items to 0
         if(!PlayerPrefs.HasKey("Gold")) PlayerPrefs.SetInt("Gold", 0);
-        if(!PlayerPrefs.HasKey("Grain")) PlayerPrefs.SetInt("Grain", 0);
-        if(!PlayerPrefs.HasKey("Fish")) PlayerPrefs.SetInt("Fish", 0);
-        if(!PlayerPrefs.HasKey("Oil")) PlayerPrefs.SetInt("Oil", 0);
-        if(!PlayerPrefs.HasKey("Wood")) PlayerPrefs.SetInt("Wood", 0);
-        if(!PlayerPrefs.HasKey("Brick")) PlayerPrefs.SetInt("Brick", 0);
-        if(!PlayerPrefs.HasKey("Iron")) PlayerPrefs.SetInt("Iron", 0);
-        if(!PlayerPrefs.HasKey("Rum")) PlayerPrefs.SetInt("Rum", 0);
-        if(!PlayerPrefs.HasKey("Silk")) PlayerPrefs.SetInt("Silk", 0);
-        if(!PlayerPrefs.HasKey("Silverware")) PlayerPrefs.SetInt("Silverware", 0);
-        if(!PlayerPrefs.HasKey("Emerald")) PlayerPrefs.SetInt("Emerald", 0);
+        if (!PlayerPrefs.HasKey("Inventory")) PlayerPrefs.SetString("Inventory", JsonConvert.SerializeObject(new Inventory()));
         
         //Save all created PlayerPref variables:
         PlayerPrefs.Save();
